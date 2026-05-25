@@ -1,4 +1,4 @@
-/* Duke & Lume — Home page: collections preview row
+/* Duke & Lume — Home: Collections strip (left column, bottom)
    --------------------------------------------------------------- */
 
 (function () {
@@ -6,28 +6,30 @@
   if (!mount) return;
 
   const data = window.COLLECTIONS_DATA || [];
+  const works = window.GALLERY_DATA || [];
+
   if (!data.length) {
     mount.innerHTML = '<p class="empty-state">No collections yet.</p>';
     return;
   }
 
-  const html = data.map((c) => {
+  mount.innerHTML = data.map((c) => {
     const slug = DL_escape(c.slug);
     const title = DL_escape(c.title);
     const img = DL_escape(c.image);
-    const count = typeof c.count === "number" ? c.count : "";
-    const meta = count ? `${count} ${count === 1 ? "work" : "works"}` : "Collection";
+    const count = typeof c.count === "number"
+      ? c.count
+      : works.filter((w) => (w.category || w.collection) === c.slug).length;
     return `
-      <a class="collection-card" href="collections.html?category=${slug}">
-        <div class="collection-card__media">
+      <a class="collection-mini" href="collections.html?category=${slug}">
+        <div class="collection-mini__media">
           <img src="${img}" alt="${title}" data-fallback loading="lazy">
         </div>
-        <h3 class="collection-card__title">${title}</h3>
-        <div class="collection-card__meta">${meta}</div>
+        <h3 class="collection-mini__title">${title}</h3>
+        <div class="collection-mini__count">${count} ${count === 1 ? "artwork" : "artworks"}</div>
       </a>
     `;
   }).join("");
 
-  mount.innerHTML = html;
   if (window.DL_attachImageFallbacks) window.DL_attachImageFallbacks(mount);
 })();

@@ -7,8 +7,14 @@
   <meta name="description" content="A curated AI art gallery for the modern collector. Editorial, cinematic, and considered.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/css/styles.css">
+  <style>
+    .quote-block__sig {
+      font-family: "Dancing Script", "Brush Script MT", cursive;
+      font-weight: 500;
+    }
+  </style>
 </head>
 <body>
 
@@ -25,54 +31,125 @@
         <a href="journal.html">Journal</a>
         <a href="inquire.html">Inquire</a>
       </nav>
+      <span class="header-disc" aria-hidden="true"></span>
     </div>
   </header>
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero__text">
-        <div class="hero__eyebrow">Welcome to</div>
-        <h1 class="hero__title">
-          <span class="brand-line">Duke &amp; Lume</span>
-          <span>Collection</span>
-        </h1>
-        <p class="hero__lead">
-          A curated gallery of AI-generated art for the modern collector — editorial, cinematic, and considered. Quiet works, presented with intention.
-        </p>
-        <a href="gallery.html" class="btn">Enter the Exhibition</a>
-      </div>
-      <div class="hero__media">
-        <img src="src/assets/images/hero/hero.jpg" alt="Featured artwork from Duke &amp; Lume Collection" data-fallback>
-      </div>
-    </section>
+    <section class="editorial">
 
-    <!-- VISION -->
-    <section class="vision">
-      <div class="vision__media">
-        <img src="src/assets/images/vision/vision.jpg" alt="Vision — editorial visual" data-fallback>
-      </div>
-      <div class="vision__text">
-        <div class="vision__eyebrow">Our Vision</div>
-        <h2 class="vision__title">Art for the Modern Collector</h2>
-        <p class="vision__body">
-          Duke &amp; Lume is a quiet, considered gallery. Each piece is selected for its presence — the way it sits on a wall, the way it holds a room, the way it lingers. We believe in fewer works, chosen well.
-        </p>
-        <a href="about.html" class="text-link">Learn more about the collection →</a>
-      </div>
-    </section>
+      <!-- LEFT COLUMN -->
+      <div class="editorial__left">
 
-    <!-- COLLECTIONS PREVIEW -->
-    <section class="section collections-preview">
-      <div class="section-head">
-        <div>
-          <div class="section-head__eyebrow">Explore</div>
-          <h2 class="section-head__title">Find What Inspires You</h2>
+        <!-- HERO -->
+        <div class="hero-block">
+          <div class="hero-block__bg">
+            <img src="src/assets/images/hero/hero.jpg" alt="Featured artwork from Duke &amp; Lume Collection" data-fallback>
+          </div>
+          <div class="scroll-indicator" aria-hidden="true">Scroll</div>
+          <div class="hero-block__inner">
+            <div class="hero-block__eyebrow">Welcome to</div>
+            <h1 class="hero-block__title">
+              <span class="brand-line">Duke &amp; Lume</span>
+              <span>Collection</span>
+            </h1>
+            <p class="hero-block__lead">
+              AI-generated artworks that blend contemporary aesthetics with timeless storytelling.
+            </p>
+            <div class="hero-block__cta">
+              <a href="gallery.html" class="btn">Enter the Exhibition</a>
+              <a href="gallery.html" class="play-link">
+                <span class="play-link__icon">
+                  <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0 L9 5 L1 10 Z"/></svg>
+                </span>
+                View Trailer
+              </a>
+            </div>
+          </div>
         </div>
-        <a href="collections.html" class="text-link">View all collections →</a>
+
+        <!-- VISION -->
+        <div class="vision-block">
+          <div class="vision-block__media">
+            <img src="src/assets/images/vision/vision.jpg" alt="Vision — editorial visual" data-fallback>
+          </div>
+          <div class="vision-block__text">
+            <div class="vision-block__eyebrow">Our Vision</div>
+            <h2 class="vision-block__title">Art for the<br>Modern Collector</h2>
+            <p class="vision-block__body">
+              Duke &amp; Lume Collection explores the beauty of the now — capturing moments, emotions, and ideas through the power of AI. Each piece is crafted with intention and curated for those who see art as more than decoration — but expression.
+            </p>
+            <a href="about.html" class="text-link">Learn more about the collection →</a>
+          </div>
+          <div class="vision-block__seal" aria-hidden="true">
+            <div class="seal">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <path id="seal-circle" d="M 100,100 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0" />
+                </defs>
+                <text font-family="Inter, sans-serif" font-size="13" letter-spacing="6" fill="#161412">
+                  <textPath href="#seal-circle" startOffset="0">DUKE &amp; LUME · COLLECTION · DUKE &amp; LUME · COLLECTION ·</textPath>
+                </text>
+              </svg>
+              <div class="seal__mark">
+                D&amp;L<small>EST. 2026</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLLECTIONS PREVIEW -->
+        <div class="collections-block">
+          <div class="collections-block__head">
+            <div>
+              <div class="collections-block__eyebrow">Explore Collections</div>
+              <h2 class="collections-block__title">Find What Inspires You</h2>
+            </div>
+            <a href="collections.html" class="text-link--mini">View all collections →</a>
+          </div>
+          <div class="collections-strip" data-collections-preview></div>
+        </div>
+
       </div>
-      <div class="collections-row" data-collections-preview></div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="editorial__right">
+
+        <!-- FEATURED ARTWORKS -->
+        <div class="featured-block">
+          <div class="featured-block__head">
+            <h3 class="featured-block__title">Featured Artworks</h3>
+            <a href="gallery.html" class="text-link--mini">Browse all →</a>
+          </div>
+          <div class="featured-grid" data-featured-grid></div>
+        </div>
+
+        <!-- QUOTE / STORY -->
+        <div class="quote-block">
+          <div class="quote-block__bg">
+            <img src="src/assets/images/hero/quote.jpg" alt="" data-fallback>
+          </div>
+          <div class="quote-block__inner">
+            <p class="quote-block__text">
+              Every piece tells a story.<br>
+              Every story finds a collector.
+            </p>
+            <div class="quote-block__sig">Duke &amp; Lume</div>
+          </div>
+        </div>
+
+        <!-- JOURNAL -->
+        <div class="journal-home">
+          <div class="journal-home__head">
+            <h3 class="journal-home__title">From Our Journal</h3>
+            <a href="journal.html" class="text-link--mini">Visit journal →</a>
+          </div>
+          <div class="journal-home__grid" data-journal-home></div>
+        </div>
+
+      </div>
+
     </section>
 
     <!-- VALUE ROW -->
@@ -97,50 +174,34 @@
 
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <div class="footer-brand">
-        Duke &amp; Lume<br>Collection
-        <p>A curated AI art gallery for the modern collector.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Gallery</h4>
-        <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="about.html#license">License</a></li>
-          <li><a href="about.html#terms">Terms</a></li>
-          <li><a href="about.html#faq">FAQ</a></li>
-          <li><a href="inquire.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Browse</h4>
-        <ul>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="collections.html">Collections</a></li>
-          <li><a href="journal.html">Journal</a></li>
-          <li><a href="inquire.html">Inquire</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Follow</h4>
-        <ul>
-          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
-          <li><a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="mailto:dukekartel88@gmail.com">Email</a></li>
-        </ul>
-      </div>
+  <!-- Slim editorial footer matching the reference -->
+  <footer class="editorial-footer">
+    <div class="editorial-footer__brand">
+      Duke &amp; Lume
+      <small>Collection</small>
     </div>
-    <div class="footer-bottom">
-      <div>© <span data-year>2026</span> Duke &amp; Lume Collection</div>
-      <div>All works reserved</div>
+    <nav class="editorial-footer__nav" aria-label="Footer">
+      <a href="about.html">About</a>
+      <a href="about.html#license">License</a>
+      <a href="about.html#terms">Terms</a>
+      <a href="about.html#faq">FAQ</a>
+      <a href="inquire.html">Contact</a>
+    </nav>
+    <div class="editorial-footer__social">
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a>
+      <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+      <a href="mailto:dukekartel88@gmail.com">Email</a>
     </div>
+    <div class="editorial-footer__copy">© <span data-year>2026</span> Duke &amp; Lume Collection</div>
   </footer>
 
   <script src="src/data/collections.js"></script>
   <script src="src/data/gallery.js"></script>
+  <script src="src/data/journal.js"></script>
   <script src="src/js/main.js"></script>
   <script src="src/js/home.js"></script>
+  <script src="src/js/home-featured.js"></script>
+  <script src="src/js/home-journal.js"></script>
 </body>
 </html>
