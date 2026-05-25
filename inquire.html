@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquire — Duke &amp; Lume Collection</title>
+  <meta name="description" content="Inquire about acquiring a work from Duke &amp; Lume Collection.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__line">Duke &amp; Lume</span>
+        <span class="brand__line brand__line--sub">Collection</span>
+      </a>
+      <nav class="nav">
+        <a href="gallery.html">Gallery</a>
+        <a href="collections.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="inquire.html">Inquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__eyebrow">Inquire</div>
+      <h1 class="page-hero__title">Begin a quiet conversation.</h1>
+    </section>
+
+    <section class="inquire-wrap">
+      <div class="inquire-info">
+        <p>
+          For acquisition, licensing, or commission. Share a few details about the work or brief, and we'll respond personally — typically within two business days.
+        </p>
+        <div class="inquire-info__contact">
+          <div>Email — <a href="mailto:dukekartel88@gmail.com">dukekartel88@gmail.com</a></div>
+        </div>
+      </div>
+
+      <form class="form" action="mailto:dukekartel88@gmail.com" method="post" enctype="text/plain">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="work">Work of interest</label>
+          <input type="text" id="work" name="work" placeholder="Work title or collection">
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5"></textarea>
+        </div>
+        <button class="btn" type="submit">Send Inquiry</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="footer-brand">
+        Duke &amp; Lume<br>Collection
+        <p>A curated AI art gallery for the modern collector.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Gallery</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#license">License</a></li>
+          <li><a href="about.html#terms">Terms</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="inquire.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Browse</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="inquire.html">Inquire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
+          <li><a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="mailto:dukekartel88@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span data-year>2026</span> Duke &amp; Lume Collection</div>
+      <div>All works reserved</div>
+    </div>
+  </footer>
+
+  <script src="src/js/main.js"></script>
+  <script>
+    // Pre-fill "Work of interest" from ?work= query
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const w = params.get("work");
+      if (w) {
+        const input = document.getElementById("work");
+        if (input) input.value = w;
+      }
+    })();
+  </script>
+</body>
+</html>

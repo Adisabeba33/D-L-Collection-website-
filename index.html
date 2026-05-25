@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duke &amp; Lume Collection — Art for the Modern Collector</title>
+  <meta name="description" content="A curated AI art gallery for the modern collector. Editorial, cinematic, and considered.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="brand" aria-label="Duke &amp; Lume Collection — Home">
+        <span class="brand__line">Duke &amp; Lume</span>
+        <span class="brand__line brand__line--sub">Collection</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="gallery.html">Gallery</a>
+        <a href="collections.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="inquire.html">Inquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__text">
+        <div class="hero__eyebrow">Welcome to</div>
+        <h1 class="hero__title">
+          <span class="brand-line">Duke &amp; Lume</span>
+          <span>Collection</span>
+        </h1>
+        <p class="hero__lead">
+          A curated gallery of AI-generated art for the modern collector — editorial, cinematic, and considered. Quiet works, presented with intention.
+        </p>
+        <a href="gallery.html" class="btn">Enter the Exhibition</a>
+      </div>
+      <div class="hero__media">
+        <img src="src/assets/images/hero/hero.jpg" alt="Featured artwork from Duke &amp; Lume Collection" data-fallback>
+      </div>
+    </section>
+
+    <!-- VISION -->
+    <section class="vision">
+      <div class="vision__media">
+        <img src="src/assets/images/vision/vision.jpg" alt="Vision — editorial visual" data-fallback>
+      </div>
+      <div class="vision__text">
+        <div class="vision__eyebrow">Our Vision</div>
+        <h2 class="vision__title">Art for the Modern Collector</h2>
+        <p class="vision__body">
+          Duke &amp; Lume is a quiet, considered gallery. Each piece is selected for its presence — the way it sits on a wall, the way it holds a room, the way it lingers. We believe in fewer works, chosen well.
+        </p>
+        <a href="about.html" class="text-link">Learn more about the collection →</a>
+      </div>
+    </section>
+
+    <!-- COLLECTIONS PREVIEW -->
+    <section class="section collections-preview">
+      <div class="section-head">
+        <div>
+          <div class="section-head__eyebrow">Explore</div>
+          <h2 class="section-head__title">Find What Inspires You</h2>
+        </div>
+        <a href="collections.html" class="text-link">View all collections →</a>
+      </div>
+      <div class="collections-row" data-collections-preview></div>
+    </section>
+
+    <!-- VALUE ROW -->
+    <section class="value-row">
+      <div class="value">
+        <h3 class="value__title">Unique AI-Generated Art</h3>
+        <p class="value__body">Original works, conceived and refined as singular editorial pieces.</p>
+      </div>
+      <div class="value">
+        <h3 class="value__title">Curated With Intention</h3>
+        <p class="value__body">Every work is chosen — nothing fills space. Less, but better.</p>
+      </div>
+      <div class="value">
+        <h3 class="value__title">Exclusive Licensing</h3>
+        <p class="value__body">Clear terms for collectors who want to live with the work, not just look at it.</p>
+      </div>
+      <div class="value">
+        <h3 class="value__title">Secure &amp; Ethical</h3>
+        <p class="value__body">Made with care. Sold with transparency. Owned with confidence.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="footer-brand">
+        Duke &amp; Lume<br>Collection
+        <p>A curated AI art gallery for the modern collector.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Gallery</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#license">License</a></li>
+          <li><a href="about.html#terms">Terms</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="inquire.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Browse</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="inquire.html">Inquire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
+          <li><a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="mailto:dukekartel88@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span data-year>2026</span> Duke &amp; Lume Collection</div>
+      <div>All works reserved</div>
+    </div>
+  </footer>
+
+  <script src="src/data/collections.js"></script>
+  <script src="src/data/gallery.js"></script>
+  <script src="src/js/main.js"></script>
+  <script src="src/js/home.js"></script>
+</body>
+</html>
