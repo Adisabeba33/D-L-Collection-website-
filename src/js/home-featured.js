@@ -25,10 +25,10 @@
     mount.innerHTML = picks.map(function (w, i) {
       const title = DL_escape(w.title);
       const img = DL_escape(w.image);
-      const id = DL_escape(w.id);
+      const idHref = DL_escape(encodeURIComponent(w.id || ""));
       const tall = (picks.length >= 6 && i === 0) ? " featured-grid__item--tall" : "";
       return '\
-        <a class="featured-grid__item' + tall + '" href="inquire.html?work=' + id + '" title="' + title + '">\
+        <a class="featured-grid__item' + tall + '" href="inquire.html?work=' + idHref + '" title="' + title + '">\
           <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
         </a>';
     }).join("");

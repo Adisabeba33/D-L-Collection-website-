@@ -23,13 +23,17 @@
   }
 })();
 
-/* Image fallback: if image fails to load, swap to a placeholder block */
+/* Image fallback: if image fails to load, swap to a placeholder block.
+   Handles both the live `error` event and the case where the error
+   already fired before the listener attached (cached 404s, file://). */
 window.DL_attachImageFallbacks = function (root) {
   const scope = root || document;
   scope.querySelectorAll("img[data-fallback]").forEach((img) => {
-    img.addEventListener("error", function handler() {
+    if (img.dataset.dlFallbackBound) return;
+    img.dataset.dlFallbackBound = "1";
+
+    function onError() {
       const src = img.getAttribute("src") || "";
-      // Try .jpeg if .jpg failed (and vice versa) — once
       if (!img.dataset.triedAlt) {
         img.dataset.triedAlt = "1";
         if (/\.jpg$/i.test(src)) {
@@ -41,7 +45,6 @@ window.DL_attachImageFallbacks = function (root) {
           return;
         }
       }
-      // Replace with placeholder
       const ph = document.createElement("div");
       ph.className = "image-placeholder";
       ph.style.width = "100%";
@@ -54,9 +57,25 @@ window.DL_attachImageFallbacks = function (root) {
         parent.appendChild(ph);
       }
       img.style.opacity = "0";
-    }, { once: true });
+    }
+
+    img.addEventListener("error", onError);
+    // Catch the case where the error already fired before we got here
+    // (cached 404, file:// resolution failures, etc.)
+    if (img.complete && img.naturalWidth === 0) onError();
   });
 };
+
+/* Process static `data-fallback` images present at page load.
+   Renderers call DL_attachImageFallbacks for their own mounts; this
+   covers the hero / vision / quote images that live in the HTML. */
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", function () {
+    window.DL_attachImageFallbacks(document);
+  });
+} else {
+  window.DL_attachImageFallbacks(document);
+}
 
 /* Small helper: read ?key=value query param */
 window.DL_query = function (key) {

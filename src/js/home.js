@@ -15,14 +15,15 @@
     }
 
     mount.innerHTML = data.map(function (c) {
-      const slug = DL_escape(c.slug);
+      const slugHref = DL_escape(encodeURIComponent(c.slug));
       const title = DL_escape(c.title);
       const img = DL_escape(c.image);
-      const count = typeof c.count === "number"
+      const hasCount = typeof c.count === "number" && c.count > 0;
+      const count = hasCount
         ? c.count
         : works.filter(function (w) { return (w.category || w.collection) === c.slug; }).length;
       return '\
-        <a class="collection-mini" href="collections.html?category=' + slug + '">\
+        <a class="collection-mini" href="collections.html?category=' + slugHref + '">\
           <div class="collection-mini__media">\
             <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
           </div>\

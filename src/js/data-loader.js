@@ -26,7 +26,10 @@
 
   function loadOne(src) {
     return fetch(src.url, { cache: "no-store" })
-      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status + " for " + src.url);
+        return r.json();
+      })
       .then(function (data) {
         if (data && Array.isArray(data[src.field])) {
           window[src.key] = data[src.field];
@@ -34,7 +37,12 @@
           window[src.key] = data;
         }
       })
-      .catch(function () { /* leave defaults */ });
+      .catch(function (err) {
+        // Leave defaults ([]); surface the reason for the operator.
+        if (typeof console !== "undefined" && console.warn) {
+          console.warn("[Duke & Lume] data load failed:", src.url, err && err.message ? err.message : err);
+        }
+      });
   }
 
   Promise.all(sources.map(loadOne)).then(function () {

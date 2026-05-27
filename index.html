@@ -201,16 +201,15 @@
   <script src="src/js/home.js"></script>
   <script src="src/js/home-featured.js"></script>
   <script src="src/js/home-journal.js"></script>
-  <!-- Netlify Identity: completes /admin invitation links that land on the home page -->
+  <!-- Netlify Identity: completes /admin invitation links that land on the home page.
+       The login handler is registered unconditionally — login() only fires on a
+       fresh login (not on an existing session), and registering it before the
+       widget can fire `init` would race with the synchronous widget bootstrap. -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
     if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", function (user) {
-        if (!user) {
-          window.netlifyIdentity.on("login", function () {
-            document.location.href = "/admin/";
-          });
-        }
+      window.netlifyIdentity.on("login", function () {
+        document.location.href = "/admin/";
       });
     }
   </script>

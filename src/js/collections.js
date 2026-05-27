@@ -34,8 +34,9 @@
         const img = DL_escape(w.image);
         const year = DL_escape(w.year || "");
         const cat = DL_escape(w.category || w.collection || "");
+        const idHref = DL_escape(encodeURIComponent(w.id || ""));
         return '\
-          <a class="artwork-card" href="inquire.html?work=' + DL_escape(w.id) + '">\
+          <a class="artwork-card" href="inquire.html?work=' + idHref + '">\
             <div class="artwork-card__media">\
               <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
             </div>\
@@ -55,15 +56,16 @@
 
     mount.innerHTML = collections.map(function (c) {
       const title = DL_escape(c.title);
-      const slug = DL_escape(c.slug);
+      const slugHref = DL_escape(encodeURIComponent(c.slug));
       const img = DL_escape(c.image);
       const desc = DL_escape(c.description || "");
-      const count = typeof c.count === "number"
+      const hasCount = typeof c.count === "number" && c.count > 0;
+      const count = hasCount
         ? c.count
         : works.filter(function (w) { return (w.category || w.collection) === c.slug; }).length;
       const meta = count + " " + (count === 1 ? "work" : "works");
       return '\
-        <a class="collection-tile" href="collections.html?category=' + slug + '">\
+        <a class="collection-tile" href="collections.html?category=' + slugHref + '">\
           <div class="collection-tile__media">\
             <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
           </div>\

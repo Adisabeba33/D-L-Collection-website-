@@ -28,8 +28,9 @@
         const img = DL_escape(w.image);
         const year = DL_escape(w.year || "");
         const cat = DL_escape(w.category || w.collection || "");
+        const idHref = DL_escape(encodeURIComponent(w.id || ""));
         return '\
-          <a class="artwork-card" href="inquire.html?work=' + DL_escape(w.id) + '">\
+          <a class="artwork-card" href="inquire.html?work=' + idHref + '">\
             <div class="artwork-card__media">\
               <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
             </div>\
@@ -52,6 +53,7 @@
       filters.querySelectorAll(".filter-chip").forEach(function (btn) {
         btn.addEventListener("click", function () {
           active = btn.dataset.slug;
+          // URLSearchParams encodes the value automatically.
           const url = new URL(location.href);
           if (active === "all") url.searchParams.delete("category");
           else url.searchParams.set("category", active);

@@ -8,18 +8,9 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+  <!-- Decap CMS auto-detects the Netlify Identity widget loaded above
+       and handles login/logout itself — no extra wiring needed here.
+       Invitation links land on the site root (handled by index.html). -->
   <script src="https://unpkg.com/decap-cms@^3.5.0/dist/decap-cms.js"></script>
-  <script>
-    // Auto-redirect after Netlify Identity login on the home page
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", function (user) {
-        if (!user) {
-          window.netlifyIdentity.on("login", function () {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
 </body>
 </html>

@@ -14,8 +14,10 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Pretty URL for the admin panel
+# Pretty URL for the admin panel — force = true so Netlify's static
+# handler doesn't decide to serve /admin directly via implicit index.
 [[redirects]]
   from = "/admin"
   to = "/admin/"
   status = 301
+  force = true
