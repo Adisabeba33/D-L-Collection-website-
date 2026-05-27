@@ -1,0 +1,108 @@
+# ============================================================
+# Duke & Lume — Decap CMS configuration
+# ============================================================
+# This file describes the admin UI: what content types exist,
+# what fields each has, and where files are written in the repo.
+# Login is handled by Netlify Identity + Git Gateway.
+# ============================================================
+
+backend:
+  name: git-gateway
+  branch: main
+
+# When working locally with `npx decap-server`, uncomment:
+# local_backend: true
+
+# Default upload location (used only if a collection doesn't override it).
+# No leading slash — keeps the path identical to what's stored in JSON,
+# which is what the renderers consume directly.
+media_folder: "src/assets/images/uploads"
+public_folder: "/src/assets/images/uploads"
+
+# ============================================================
+# Collections (what shows in the admin sidebar)
+# ============================================================
+collections:
+
+  # ----------------------------------------------------------
+  # ARTWORKS  →  src/data/gallery.json  →  appears in Gallery,
+  # in their assigned Collection, and (if featured) on the home
+  # page Featured Artworks grid.
+  # ----------------------------------------------------------
+  - name: "artworks"
+    label: "Artworks"
+    label_singular: "Artwork"
+    file: "src/data/gallery.json"
+    format: "json"
+    media_folder: "/src/assets/images/artworks"
+    public_folder: "/src/assets/images/artworks"
+    fields:
+      - label: "Artworks"
+        name: "artworks"
+        label_singular: "Artwork"
+        widget: "list"
+        summary: "{{fields.title}} — {{fields.category}}"
+        fields:
+          - { label: "ID (slug)", name: "id", widget: "string", hint: "lowercase, dashes. e.g. beach-diva" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Year", name: "year", widget: "string", default: "2026" }
+          - label: "Category"
+            name: "category"
+            widget: "select"
+            options:
+              - { label: "Lifestyle", value: "lifestyle" }
+              - { label: "Portraits", value: "portraits" }
+              - { label: "Cinematic Scenes", value: "cinematic" }
+              - { label: "Abstract", value: "abstract" }
+              - { label: "Pop Culture", value: "pop-culture" }
+          - { label: "Image", name: "image", widget: "image", hint: "Drag-and-drop or upload. JPG recommended." }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Feature on home page", name: "featured", widget: "boolean", default: false, required: false, hint: "Show in the Featured Artworks grid on the home page." }
+
+  # ----------------------------------------------------------
+  # COLLECTIONS  →  src/data/collections.json  →  appears in
+  # Collections page and the home preview strip.
+  # ----------------------------------------------------------
+  - name: "collections"
+    label: "Collections"
+    label_singular: "Collection"
+    file: "src/data/collections.json"
+    format: "json"
+    media_folder: "/src/assets/images/collections"
+    public_folder: "/src/assets/images/collections"
+    fields:
+      - label: "Collections"
+        name: "collections"
+        label_singular: "Collection"
+        widget: "list"
+        summary: "{{fields.title}}"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Slug", name: "slug", widget: "string", hint: "Lowercase with dashes. Must match the Category value on artworks." }
+          - { label: "Count (display only)", name: "count", widget: "number", default: 0, value_type: "int", required: false }
+          - { label: "Cover image", name: "image", widget: "image" }
+          - { label: "Description", name: "description", widget: "text" }
+
+  # ----------------------------------------------------------
+  # JOURNAL  →  src/data/journal.json  →  appears on the
+  # Journal page and the home page "From Our Journal" preview.
+  # ----------------------------------------------------------
+  - name: "journal"
+    label: "Journal"
+    label_singular: "Entry"
+    file: "src/data/journal.json"
+    format: "json"
+    media_folder: "/src/assets/images/journal"
+    public_folder: "/src/assets/images/journal"
+    fields:
+      - label: "Entries"
+        name: "entries"
+        label_singular: "Entry"
+        widget: "list"
+        summary: "{{fields.title}} — {{fields.date}}"
+        fields:
+          - { label: "ID (slug)", name: "id", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Date", name: "date", widget: "string", hint: 'e.g. "MAY 16, 2026"' }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Excerpt", name: "excerpt", widget: "text" }

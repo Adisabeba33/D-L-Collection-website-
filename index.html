@@ -196,12 +196,23 @@
     <div class="editorial-footer__copy">© <span data-year>2026</span> Duke &amp; Lume Collection</div>
   </footer>
 
-  <script src="src/data/collections.js"></script>
-  <script src="src/data/gallery.js"></script>
-  <script src="src/data/journal.js"></script>
   <script src="src/js/main.js"></script>
+  <script src="src/js/data-loader.js"></script>
   <script src="src/js/home.js"></script>
   <script src="src/js/home-featured.js"></script>
   <script src="src/js/home-journal.js"></script>
+  <!-- Netlify Identity: completes /admin invitation links that land on the home page -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
