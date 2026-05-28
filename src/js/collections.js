@@ -36,7 +36,7 @@
         const cat = DL_escape(w.category || w.collection || "");
         const idHref = DL_escape(encodeURIComponent(w.id || ""));
         return '\
-          <a class="artwork-card" href="inquire.html?work=' + idHref + '">\
+          <a class="artwork-card" href="work.html?id=' + idHref + '" data-reveal>\
             <div class="artwork-card__media">\
               <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
             </div>\
@@ -46,6 +46,7 @@
       }).join("");
 
       if (window.DL_attachImageFallbacks) window.DL_attachImageFallbacks(mount);
+      if (window.DL_attachReveal) window.DL_attachReveal(mount);
       return;
     }
 
@@ -65,7 +66,7 @@
         : works.filter(function (w) { return (w.category || w.collection) === c.slug; }).length;
       const meta = count + " " + (count === 1 ? "work" : "works");
       return '\
-        <a class="collection-tile" href="collections.html?category=' + slugHref + '">\
+        <a class="collection-tile" href="collections.html?category=' + slugHref + '" data-reveal>\
           <div class="collection-tile__media">\
             <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
           </div>\
@@ -76,6 +77,7 @@
     }).join("");
 
     if (window.DL_attachImageFallbacks) window.DL_attachImageFallbacks(mount);
+    if (window.DL_attachReveal) window.DL_attachReveal(mount);
   }
 
   if (window.DL_DATA_READY) init();

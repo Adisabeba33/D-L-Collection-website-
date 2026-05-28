@@ -30,7 +30,7 @@
         const cat = DL_escape(w.category || w.collection || "");
         const idHref = DL_escape(encodeURIComponent(w.id || ""));
         return '\
-          <a class="artwork-card" href="inquire.html?work=' + idHref + '">\
+          <a class="artwork-card" href="work.html?id=' + idHref + '" data-reveal>\
             <div class="artwork-card__media">\
               <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
             </div>\
@@ -40,6 +40,7 @@
       }).join("");
 
       if (window.DL_attachImageFallbacks) window.DL_attachImageFallbacks(grid);
+      if (window.DL_attachReveal) window.DL_attachReveal(grid);
     }
 
     function renderFilters() {

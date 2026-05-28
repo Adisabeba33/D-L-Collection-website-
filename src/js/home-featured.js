@@ -28,12 +28,13 @@
       const idHref = DL_escape(encodeURIComponent(w.id || ""));
       const tall = (picks.length >= 6 && i === 0) ? " featured-grid__item--tall" : "";
       return '\
-        <a class="featured-grid__item' + tall + '" href="inquire.html?work=' + idHref + '" title="' + title + '">\
+        <a class="featured-grid__item' + tall + '" href="work.html?id=' + idHref + '" title="' + title + '" data-reveal data-reveal-delay="' + (i * 60) + '">\
           <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
         </a>';
     }).join("");
 
     if (window.DL_attachImageFallbacks) window.DL_attachImageFallbacks(mount);
+    if (window.DL_attachReveal) window.DL_attachReveal(mount);
   }
 
   if (window.DL_DATA_READY) init();

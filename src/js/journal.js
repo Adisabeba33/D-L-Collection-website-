@@ -12,13 +12,13 @@
       return;
     }
 
-    mount.innerHTML = data.map(function (e) {
+    mount.innerHTML = data.map(function (e, i) {
       const title = DL_escape(e.title);
       const img = DL_escape(e.image);
       const date = DL_escape(e.date || "");
       const excerpt = DL_escape(e.excerpt || "");
       return '\
-        <article class="journal-card">\
+        <article class="journal-card" data-reveal data-reveal-delay="' + (i * 80) + '">\
           <div class="journal-card__media">\
             <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
           </div>\
@@ -29,6 +29,7 @@
     }).join("");
 
     if (window.DL_attachImageFallbacks) window.DL_attachImageFallbacks(mount);
+    if (window.DL_attachReveal) window.DL_attachReveal(mount);
   }
 
   if (window.DL_DATA_READY) init();

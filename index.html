@@ -60,7 +60,7 @@
             <img src="src/assets/images/hero/hero.jpg" alt="Featured artwork from Duke &amp; Lume Collection" data-fallback data-site-image="hero_image">
           </div>
           <div class="scroll-indicator" aria-hidden="true">Scroll</div>
-          <div class="hero-block__inner">
+          <div class="hero-block__inner" data-reveal>
             <div class="hero-block__eyebrow">Welcome to</div>
             <h1 class="hero-block__title">
               <span class="brand-line">Duke &amp; Lume</span>
@@ -86,7 +86,7 @@
           <div class="vision-block__media">
             <img src="src/assets/images/vision/vision.jpg" alt="Vision — editorial visual" data-fallback data-site-image="vision_image">
           </div>
-          <div class="vision-block__text">
+          <div class="vision-block__text" data-reveal>
             <div class="vision-block__eyebrow">Our Vision</div>
             <h2 class="vision-block__title">Art for the<br>Modern Collector</h2>
             <p class="vision-block__body">
@@ -142,7 +142,7 @@
           <div class="quote-block__bg">
             <img src="src/assets/images/hero/quote.jpg" alt="" data-fallback data-site-image="quote_image">
           </div>
-          <div class="quote-block__inner">
+          <div class="quote-block__inner" data-reveal>
             <p class="quote-block__text">
               Every piece tells a story.<br>
               Every story finds a collector.
@@ -166,19 +166,19 @@
 
     <!-- VALUE ROW -->
     <section class="value-row">
-      <div class="value">
+      <div class="value" data-reveal data-reveal-delay="0">
         <h3 class="value__title">Unique AI-Generated Art</h3>
         <p class="value__body">Original works, conceived and refined as singular editorial pieces.</p>
       </div>
-      <div class="value">
+      <div class="value" data-reveal data-reveal-delay="80">
         <h3 class="value__title">Curated With Intention</h3>
         <p class="value__body">Every work is chosen — nothing fills space. Less, but better.</p>
       </div>
-      <div class="value">
+      <div class="value" data-reveal data-reveal-delay="160">
         <h3 class="value__title">Exclusive Licensing</h3>
         <p class="value__body">Clear terms for collectors who want to live with the work, not just look at it.</p>
       </div>
-      <div class="value">
+      <div class="value" data-reveal data-reveal-delay="240">
         <h3 class="value__title">Secure &amp; Ethical</h3>
         <p class="value__body">Made with care. Sold with transparency. Owned with confidence.</p>
       </div>
@@ -209,6 +209,7 @@
   </footer>
 
   <script src="src/js/main.js"></script>
+  <script src="src/js/reveal.js"></script>
   <script src="src/js/data-loader.js"></script>
   <script src="src/js/home.js"></script>
   <script src="src/js/home-featured.js"></script>

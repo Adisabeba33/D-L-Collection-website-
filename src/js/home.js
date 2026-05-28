@@ -14,7 +14,7 @@
       return;
     }
 
-    mount.innerHTML = data.map(function (c) {
+    mount.innerHTML = data.map(function (c, i) {
       const slugHref = DL_escape(encodeURIComponent(c.slug));
       const title = DL_escape(c.title);
       const img = DL_escape(c.image);
@@ -23,7 +23,7 @@
         ? c.count
         : works.filter(function (w) { return (w.category || w.collection) === c.slug; }).length;
       return '\
-        <a class="collection-mini" href="collections.html?category=' + slugHref + '">\
+        <a class="collection-mini" href="collections.html?category=' + slugHref + '" data-reveal data-reveal-delay="' + (i * 70) + '">\
           <div class="collection-mini__media">\
             <img src="' + img + '" alt="' + title + '" data-fallback loading="lazy">\
           </div>\
@@ -33,6 +33,7 @@
     }).join("");
 
     if (window.DL_attachImageFallbacks) window.DL_attachImageFallbacks(mount);
+    if (window.DL_attachReveal) window.DL_attachReveal(mount);
   }
 
   if (window.DL_DATA_READY) init();
