@@ -25,6 +25,25 @@ public_folder: "/src/assets/images/uploads"
 collections:
 
   # ----------------------------------------------------------
+  # SITE SETTINGS  →  src/data/site.json  →  the three big
+  # editorial images on the home page (Hero, Vision, Quote bg).
+  # Single-entry file so the editor just clicks "Site" and edits.
+  # ----------------------------------------------------------
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "site"
+        label: "Site"
+        file: "src/data/site.json"
+        format: "json"
+        media_folder: "/src/assets/images/hero"
+        public_folder: "/src/assets/images/hero"
+        fields:
+          - { label: "Hero image", name: "hero_image", widget: "image", hint: "The big editorial image on the home page (left column)." }
+          - { label: "Vision section image", name: "vision_image", widget: "image", hint: "The 'Our Vision' image (reader / cityscape)." }
+          - { label: "Quote background image", name: "quote_image", widget: "image", hint: "Background of the 'Every piece tells a story' block (right column)." }
+
+  # ----------------------------------------------------------
   # ARTWORKS  →  src/data/gallery.json  →  appears in Gallery,
   # in their assigned Collection, and (if featured) on the home
   # page Featured Artworks grid.

@@ -107,27 +107,46 @@ You never have to think about these — Decap handles it.
 | `collections.html` | Collections grid; `?category=slug` shows works in that collection |
 | `about.html` | About, license, terms, FAQ |
 | `journal.html` | Journal entries |
-| `inquire.html` | Contact form (mailto-based) |
+| `inquire.html` | Contact form (Netlify Forms) |
+| `thank-you.html` | Post-submit landing page |
 | `admin/index.html` | Decap CMS UI |
 
 ---
 
-## Hero / Vision / Quote images (currently hard-coded paths)
+## Hero / Vision / Quote images (editable via CMS)
 
-The big editorial images on the home page reference these filenames
-directly in `index.html` — if you want to change them, replace the
-files at these paths (or rename them and edit the `<img src>` in
-`index.html`):
+The three big editorial images on the home page are now controlled
+through **Site Settings** in the admin panel:
 
-| Spot | File |
-| --- | --- |
-| Hero background | `src/assets/images/hero/hero.jpg` |
-| Vision section | `src/assets/images/vision/vision.jpg` |
-| Quote block background | `src/assets/images/hero/quote.jpg` |
+- **Hero image** — the wide image behind the home headline
+- **Vision section image** — the "Our Vision" block
+- **Quote background image** — the "Every piece tells a story" block
 
-(These three are not in the CMS because they're singular, design-level
-images rather than content. If you'd like them editable through the
-admin, ask and I can add a "Site Settings" section.)
+Open `/admin/` → **Site Settings → Site** → swap any of the three.
+The site loads the paths from `src/data/site.json` at runtime, so
+your changes are live within seconds of publishing.
+
+The static `<img src>` values in `index.html` are kept as fallback —
+if `site.json` is missing or a field is empty, the original file is
+used.
+
+## Social preview images (Open Graph / Twitter Cards)
+
+Every page links to `/src/assets/images/og/og-default.jpg` for
+social shares. Drop a single 1200×630 JPG at that path and links
+will render with a preview card on Instagram, Telegram, iMessage,
+Twitter/X, LinkedIn, etc.
+
+(Per-page OG images can be added later — say the word.)
+
+## Contact form
+
+`inquire.html` submits through **Netlify Forms** — submissions show
+up in your Netlify dashboard under **Forms** and can be emailed to
+you on every new entry (configure in Netlify → Forms → Notifications).
+
+No backend, no API keys, no signup elsewhere. Free for 100 form
+submissions per month on the free Netlify tier.
 
 ---
 
@@ -159,13 +178,15 @@ admin, ask and I can add a "Site Settings" section.)
     ├── data/
     │   ├── gallery.json       # written by CMS
     │   ├── collections.json   # written by CMS
-    │   └── journal.json       # written by CMS
+    │   ├── journal.json       # written by CMS
+    │   └── site.json          # written by CMS (Site Settings → home images)
     └── assets/images/
         ├── hero/
         ├── vision/
         ├── collections/
         ├── artworks/
         ├── journal/
+        ├── og/                 # 1200×630 social preview image
         └── uploads/            # catch-all for Decap uploads
 ```
 

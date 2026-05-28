@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inquire — Duke &amp; Lume Collection</title>
   <meta name="description" content="Inquire about acquiring a work from Duke &amp; Lume Collection.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Inquire — Duke &amp; Lume Collection">
+  <meta property="og:description" content="Begin a quiet conversation about acquiring, licensing, or commissioning a work.">
+  <meta property="og:image" content="/src/assets/images/og/og-default.jpg">
+  <meta property="og:site_name" content="Duke &amp; Lume Collection">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Inquire — Duke &amp; Lume Collection">
+  <meta name="twitter:description" content="Begin a quiet conversation.">
+  <meta name="twitter:image" content="/src/assets/images/og/og-default.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -44,7 +55,19 @@
         </div>
       </div>
 
-      <form class="form" action="mailto:dukekartel88@gmail.com" method="post" enctype="text/plain">
+      <!-- Submissions go to Netlify Forms (enable in Netlify dashboard → Forms).
+           After submit the user lands on /thank-you.html. Honeypot field
+           catches bots; do not remove the hidden bot-field input. -->
+      <form class="form"
+            name="inquire"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/thank-you.html">
+        <input type="hidden" name="form-name" value="inquire">
+        <p hidden>
+          <label>Don't fill this out: <input name="bot-field"></label>
+        </p>
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
