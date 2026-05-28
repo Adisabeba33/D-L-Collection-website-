@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duke &amp; Lume Collection — Art for the Modern Collector</title>
+  <meta name="description" content="A curated AI art gallery for the modern collector. Editorial, cinematic, and considered.">
+
+  <!-- Open Graph / Twitter — update og:url after deploying. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Duke &amp; Lume Collection — Art for the Modern Collector">
+  <meta property="og:description" content="A curated AI art gallery for the modern collector. Editorial, cinematic, and considered.">
+  <meta property="og:image" content="/src/assets/images/og/og-default.jpg">
+  <meta property="og:site_name" content="Duke &amp; Lume Collection">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Duke &amp; Lume Collection">
+  <meta name="twitter:description" content="A curated AI art gallery for the modern collector.">
+  <meta name="twitter:image" content="/src/assets/images/og/og-default.jpg">
+
+  <!-- Schema.org: helps Google understand this is an art gallery,
+       not a blog or shop. Affects rich results in search. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://dukeandlume.netlify.app/#website",
+        "url": "https://dukeandlume.netlify.app/",
+        "name": "Duke & Lume Collection",
+        "description": "A curated AI art gallery for the modern collector."
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://dukeandlume.netlify.app/#org",
+        "name": "Duke & Lume Collection",
+        "url": "https://dukeandlume.netlify.app/",
+        "logo": "https://dukeandlume.netlify.app/src/assets/images/og/og-default.jpg",
+        "sameAs": [
+          "https://instagram.com/",
+          "https://pinterest.com/",
+          "https://tiktok.com/"
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css">
+  <style>
+    .quote-block__sig {
+      font-family: "Dancing Script", "Brush Script MT", cursive;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="brand" aria-label="Duke &amp; Lume Collection — Home">
+        <span class="brand__line">Duke &amp; Lume</span>
+        <span class="brand__line brand__line--sub">Collection</span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a href="gallery.html">Gallery</a>
+        <a href="collections.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="inquire.html">Inquire</a>
+        <div class="nav__social" aria-label="Follow us">
+          <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </nav>
+      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
+      <span class="header-disc" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="editorial">
+
+      <!-- LEFT COLUMN -->
+      <div class="editorial__left">
+
+        <!-- HERO -->
+        <div class="hero-block">
+          <div class="hero-block__bg">
+            <img src="src/assets/images/hero/hero.jpg" alt="Featured artwork from Duke &amp; Lume Collection" data-fallback data-site-image="hero_image">
+          </div>
+          <div class="scroll-indicator" aria-hidden="true">Scroll</div>
+          <div class="hero-block__inner" data-reveal>
+            <div class="hero-block__eyebrow">Welcome to</div>
+            <h1 class="hero-block__title">
+              <span class="brand-line">Duke &amp; Lume</span>
+              <span>Collection</span>
+            </h1>
+            <p class="hero-block__lead">
+              AI-generated artworks that blend contemporary aesthetics with timeless storytelling.
+            </p>
+            <div class="hero-block__cta">
+              <a href="gallery.html" class="btn">Enter the Exhibition</a>
+              <a href="gallery.html" class="play-link">
+                <span class="play-link__icon">
+                  <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0 L9 5 L1 10 Z"/></svg>
+                </span>
+                View Trailer
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- VISION -->
+        <div class="vision-block">
+          <div class="vision-block__media">
+            <img src="src/assets/images/vision/vision.jpg" alt="Vision — editorial visual" data-fallback data-site-image="vision_image">
+          </div>
+          <div class="vision-block__text" data-reveal>
+            <div class="vision-block__eyebrow">Our Vision</div>
+            <h2 class="vision-block__title">Art for the<br>Modern Collector</h2>
+            <p class="vision-block__body">
+              Duke &amp; Lume Collection explores the beauty of the now — capturing moments, emotions, and ideas through the power of AI. Each piece is crafted with intention and curated for those who see art as more than decoration — but expression.
+            </p>
+            <a href="about.html" class="text-link">Learn more about the collection →</a>
+          </div>
+          <div class="vision-block__seal" aria-hidden="true">
+            <div class="seal">
+              <svg viewBox="0 0 200 200">
+                <defs>
+                  <path id="seal-circle" d="M 100,100 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0" />
+                </defs>
+                <text font-family="Inter, sans-serif" font-size="13" letter-spacing="6" fill="#161412">
+                  <textPath href="#seal-circle" startOffset="0">DUKE &amp; LUME · COLLECTION · DUKE &amp; LUME · COLLECTION ·</textPath>
+                </text>
+              </svg>
+              <div class="seal__mark">
+                D&amp;L<small>EST. 2026</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLLECTIONS PREVIEW -->
+        <div class="collections-block">
+          <div class="collections-block__head">
+            <div>
+              <div class="collections-block__eyebrow">Explore Collections</div>
+              <h2 class="collections-block__title">Find What Inspires You</h2>
+            </div>
+            <a href="collections.html" class="text-link--mini">View all collections →</a>
+          </div>
+          <div class="collections-strip" data-collections-preview></div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="editorial__right">
+
+        <!-- FEATURED ARTWORKS -->
+        <div class="featured-block">
+          <div class="featured-block__head">
+            <h3 class="featured-block__title">Featured Artworks</h3>
+            <a href="gallery.html" class="text-link--mini">Browse all →</a>
+          </div>
+          <div class="featured-grid" data-featured-grid></div>
+        </div>
+
+        <!-- QUOTE / STORY -->
+        <div class="quote-block">
+          <div class="quote-block__bg">
+            <img src="src/assets/images/hero/quote.jpg" alt="" data-fallback data-site-image="quote_image">
+          </div>
+          <div class="quote-block__inner" data-reveal>
+            <p class="quote-block__text">
+              Every piece tells a story.<br>
+              Every story finds a collector.
+            </p>
+            <div class="quote-block__sig">Duke &amp; Lume</div>
+          </div>
+        </div>
+
+        <!-- JOURNAL -->
+        <div class="journal-home">
+          <div class="journal-home__head">
+            <h3 class="journal-home__title">From Our Journal</h3>
+            <a href="journal.html" class="text-link--mini">Visit journal →</a>
+          </div>
+          <div class="journal-home__grid" data-journal-home></div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- VALUE ROW -->
+    <section class="value-row">
+      <div class="value" data-reveal data-reveal-delay="0">
+        <h3 class="value__title">Unique AI-Generated Art</h3>
+        <p class="value__body">Original works, conceived and refined as singular editorial pieces.</p>
+      </div>
+      <div class="value" data-reveal data-reveal-delay="80">
+        <h3 class="value__title">Curated With Intention</h3>
+        <p class="value__body">Every work is chosen — nothing fills space. Less, but better.</p>
+      </div>
+      <div class="value" data-reveal data-reveal-delay="160">
+        <h3 class="value__title">Exclusive Licensing</h3>
+        <p class="value__body">Clear terms for collectors who want to live with the work, not just look at it.</p>
+      </div>
+      <div class="value" data-reveal data-reveal-delay="240">
+        <h3 class="value__title">Secure &amp; Ethical</h3>
+        <p class="value__body">Made with care. Sold with transparency. Owned with confidence.</p>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter__inner" data-reveal>
+        <div class="newsletter__eyebrow">Stay in the loop</div>
+        <h2 class="newsletter__title" id="newsletter-title">New work, quietly delivered.</h2>
+        <p class="newsletter__body">A short note when a new piece joins the collection. No newsletters, no noise. Unsubscribe anytime.</p>
+        <form class="newsletter__form"
+              name="newsletter"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="/thank-you.html">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe →</button>
+        </form>
+        <div class="newsletter__note">We respect your inbox. Promise.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Slim editorial footer matching the reference -->
+  <footer class="editorial-footer">
+    <div class="editorial-footer__brand">
+      Duke &amp; Lume
+      <small>Collection</small>
+    </div>
+    <nav class="editorial-footer__nav" aria-label="Footer">
+      <a href="about.html">About</a>
+      <a href="about.html#license">License</a>
+      <a href="about.html#terms">Terms</a>
+      <a href="about.html#faq">FAQ</a>
+      <a href="inquire.html">Contact</a>
+    </nav>
+    <div class="editorial-footer__social">
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a>
+      <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+      <a href="mailto:dukekartel88@gmail.com">Email</a>
+    </div>
+    <div class="editorial-footer__copy">© <span data-year>2026</span> Duke &amp; Lume Collection</div>
+  </footer>
+
+  <script src="src/js/main.js"></script>
+  <script src="src/js/reveal.js"></script>
+  <script src="src/js/data-loader.js"></script>
+  <script src="src/js/home.js"></script>
+  <script src="src/js/home-featured.js"></script>
+  <script src="src/js/home-journal.js"></script>
+  <!-- Netlify Identity: completes /admin invitation links that land on the home page.
+       The login handler is registered unconditionally — login() only fires on a
+       fresh login (not on an existing session), and registering it before the
+       widget can fire `init` would race with the synchronous widget bootstrap. -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("login", function () {
+        document.location.href = "/admin/";
+      });
+    }
+  </script>
+</body>
+</html>

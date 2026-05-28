@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections — Duke &amp; Lume Collection</title>
+  <meta name="description" content="Browse curated collections within Duke &amp; Lume Collection.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Collections — Duke &amp; Lume Collection">
+  <meta property="og:description" content="Browse curated collections within Duke &amp; Lume Collection.">
+  <meta property="og:image" content="/src/assets/images/og/og-default.jpg">
+  <meta property="og:site_name" content="Duke &amp; Lume Collection">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Collections — Duke &amp; Lume Collection">
+  <meta name="twitter:description" content="Browse curated collections within Duke &amp; Lume Collection.">
+  <meta name="twitter:image" content="/src/assets/images/og/og-default.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__line">Duke &amp; Lume</span>
+        <span class="brand__line brand__line--sub">Collection</span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a href="gallery.html">Gallery</a>
+        <a href="collections.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="journal.html">Journal</a>
+        <a href="inquire.html">Inquire</a>
+        <div class="nav__social" aria-label="Follow us">
+          <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </nav>
+      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="page-hero__eyebrow" data-collections-eyebrow>Collections</div>
+      <h1 class="page-hero__title" data-collections-title>Find what inspires you.</h1>
+    </section>
+
+    <section class="collections-grid" data-collections-mount></section>
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter__inner" data-reveal>
+        <div class="newsletter__eyebrow">Stay in the loop</div>
+        <h2 class="newsletter__title" id="newsletter-title">New work, quietly delivered.</h2>
+        <p class="newsletter__body">A short note when a new piece joins the collection. No newsletters, no noise. Unsubscribe anytime.</p>
+        <form class="newsletter__form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe →</button>
+        </form>
+        <div class="newsletter__note">We respect your inbox. Promise.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="footer-brand">
+        Duke &amp; Lume<br>Collection
+        <p>A curated AI art gallery for the modern collector.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Gallery</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#license">License</a></li>
+          <li><a href="about.html#terms">Terms</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="inquire.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Browse</h4>
+        <ul>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="inquire.html">Inquire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a></li>
+          <li><a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="mailto:dukekartel88@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span data-year>2026</span> Duke &amp; Lume Collection</div>
+      <div>All works reserved</div>
+    </div>
+  </footer>
+
+  <script src="src/js/main.js"></script>
+  <script src="src/js/reveal.js"></script>
+  <script src="src/js/data-loader.js"></script>
+  <script src="src/js/collections.js"></script>
+</body>
+</html>

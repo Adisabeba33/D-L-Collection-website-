@@ -1,0 +1,23 @@
+# Netlify configuration for Duke & Lume Collection
+# ------------------------------------------------------------
+# Static site, no build step needed.
+# Decap CMS lives at /admin/ and uses Netlify Identity + Git
+# Gateway for auth (configured in the Netlify dashboard, not here).
+
+[build]
+  publish = "."
+
+# JSON files served with no-cache so Decap edits show up
+# immediately after a publish.
+[[headers]]
+  for = "/src/data/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Pretty URL for the admin panel — force = true so Netlify's static
+# handler doesn't decide to serve /admin directly via implicit index.
+[[redirects]]
+  from = "/admin"
+  to = "/admin/"
+  status = 301
+  force = true
