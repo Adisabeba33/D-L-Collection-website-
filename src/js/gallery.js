@@ -1,25 +1,49 @@
-/* Duke & Lume — Gallery page: full grid + filtering by collection
+/* Duke & Lume — Gallery page: full grid + filtering by collection + search
    --------------------------------------------------------------- */
 
 (function () {
   function init() {
     const grid = document.querySelector("[data-gallery-grid]");
     const filters = document.querySelector("[data-gallery-filters]");
+    const searchInput = document.querySelector("[data-gallery-search]");
+    const countEl = document.querySelector("[data-gallery-count]");
     if (!grid) return;
 
     const works = window.GALLERY_DATA || [];
     const collections = window.COLLECTIONS_DATA || [];
 
-    const initialCategory = (window.DL_query && DL_query("category")) || "all";
-    let active = initialCategory;
+    const params = new URLSearchParams(location.search);
+    let active = params.get("category") || "all";
+    let query = (params.get("q") || "").trim();
+
+    if (searchInput && query) searchInput.value = query;
+
+    function matchesSearch(w, q) {
+      if (!q) return true;
+      const needle = q.toLowerCase();
+      const haystack = [w.title, w.description, w.category, w.collection, w.year]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return haystack.indexOf(needle) !== -1;
+    }
 
     function render() {
-      const filtered = active === "all"
-        ? works
-        : works.filter(function (w) { return (w.category || w.collection) === active; });
+      const filtered = works.filter(function (w) {
+        const inCategory = active === "all" || (w.category || w.collection) === active;
+        return inCategory && matchesSearch(w, query);
+      });
+
+      if (countEl) {
+        if (query || active !== "all") {
+          countEl.textContent = filtered.length + " of " + works.length + " works";
+        } else {
+          countEl.textContent = "";
+        }
+      }
 
       if (!filtered.length) {
-        grid.innerHTML = '<p class="empty-state">No works yet in this collection.</p>';
+        grid.innerHTML = '<p class="empty-state">No works match your search.</p>';
         return;
       }
 
@@ -54,14 +78,34 @@
       filters.querySelectorAll(".filter-chip").forEach(function (btn) {
         btn.addEventListener("click", function () {
           active = btn.dataset.slug;
-          // URLSearchParams encodes the value automatically.
-          const url = new URL(location.href);
-          if (active === "all") url.searchParams.delete("category");
-          else url.searchParams.set("category", active);
-          history.replaceState({}, "", url);
+          syncUrl();
           renderFilters();
           render();
         });
+      });
+    }
+
+    function syncUrl() {
+      const url = new URL(location.href);
+      if (active === "all") url.searchParams.delete("category");
+      else url.searchParams.set("category", active);
+      if (!query) url.searchParams.delete("q");
+      else url.searchParams.set("q", query);
+      history.replaceState({}, "", url);
+    }
+
+    // Debounced search
+    let searchTimer = null;
+    if (searchInput) {
+      searchInput.addEventListener("input", function () {
+        const v = searchInput.value.trim();
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () {
+          if (v === query) return;
+          query = v;
+          syncUrl();
+          render();
+        }, 140);
       });
     }
 

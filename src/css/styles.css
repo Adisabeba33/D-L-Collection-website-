@@ -138,19 +138,6 @@ p {
   background: var(--ink);
 }
 
-.nav-toggle {
-  display: none;
-  background: none;
-  border: 1px solid var(--ink);
-  font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  padding: 8px 14px;
-  cursor: pointer;
-  color: var(--ink);
-}
-
 /* ============================================================
    HERO
    ============================================================ */
@@ -1669,24 +1656,6 @@ img.is-placeholder {
     flex-direction: column;
     align-items: flex-start;
   }
-  .nav {
-    display: none;
-  }
-  .nav.is-open {
-    display: flex;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--ivory);
-    flex-direction: column;
-    padding: 24px var(--gutter);
-    border-bottom: 1px solid var(--line);
-    gap: 18px;
-  }
-  .nav-toggle {
-    display: inline-block;
-  }
 }
 
 /* ============================================================
@@ -2149,4 +2118,237 @@ img.is-placeholder {
    explicit instead of using the hover opacity behavior */
 a:focus-visible {
   opacity: 1;
+}
+
+/* ============================================================
+   MOBILE NAVIGATION (HAMBURGER → FULL OVERLAY)
+   ============================================================ */
+
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--ink);
+  position: relative;
+  z-index: 105;
+}
+
+.nav-toggle__bars {
+  position: relative;
+  width: 22px;
+  height: 14px;
+}
+
+.nav-toggle__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.2px;
+  background: var(--ink);
+  transition: transform 0.3s cubic-bezier(0.7, 0, 0.3, 1), top 0.3s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.2s ease;
+}
+
+.nav-toggle__bar:nth-child(1) { top: 3px; }
+.nav-toggle__bar:nth-child(2) { top: 11px; }
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+  top: 7px;
+  transform: rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+  top: 7px;
+  transform: rotate(-45deg);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+@media (max-width: 880px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* Hide the small header decorative disc on mobile */
+  .header-disc {
+    display: none;
+  }
+
+  /* Header keeps logo + toggle visible; nav becomes the overlay */
+  .site-header__inner {
+    gap: 12px;
+  }
+
+  .nav {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: var(--ivory);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 100px 24px 60px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.4s cubic-bezier(0.7, 0, 0.3, 1),
+      visibility 0s linear 0.4s;
+    overflow-y: auto;
+  }
+
+  .nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition:
+      opacity 0.3s ease,
+      transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+  }
+
+  .nav a {
+    font-family: var(--serif);
+    font-size: clamp(28px, 7vw, 40px);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.005em;
+    color: var(--ink);
+    padding: 14px 24px;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .nav.is-open a {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Stagger items as the menu opens */
+  .nav.is-open a:nth-child(1) { transition-delay: 0.10s; }
+  .nav.is-open a:nth-child(2) { transition-delay: 0.16s; }
+  .nav.is-open a:nth-child(3) { transition-delay: 0.22s; }
+  .nav.is-open a:nth-child(4) { transition-delay: 0.28s; }
+  .nav.is-open a:nth-child(5) { transition-delay: 0.34s; }
+
+  .nav a.is-active::after {
+    display: none;
+  }
+
+  .nav a.is-active {
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 10px;
+  }
+
+  /* Lock body scroll while the overlay is up */
+  body.is-nav-open {
+    overflow: hidden;
+  }
+
+  /* Small social row at the bottom of the overlay */
+  .nav__social {
+    display: flex;
+    gap: 24px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    width: min(280px, 80%);
+    justify-content: center;
+  }
+
+  .nav__social a {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    padding: 0;
+  }
+}
+
+/* Hide the social row on desktop */
+.nav__social {
+  display: none;
+}
+
+/* ============================================================
+   GALLERY SEARCH + COUNT
+   ============================================================ */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.filter-bar__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.filter-bar__search {
+  min-width: 220px;
+  flex: 0 0 auto;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.2s ease;
+}
+
+.filter-bar__search:focus-within {
+  border-color: var(--ink);
+}
+
+.filter-bar__search input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 10px 0 10px 4px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink);
+  outline: none;
+}
+
+.filter-bar__search input::placeholder {
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* Remove default search cancel button so the look stays clean */
+.filter-bar__search input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.gallery-count {
+  padding: 18px var(--gutter) 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  font-size: 11px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--muted);
+  min-height: 18px;
+}
+
+@media (max-width: 640px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-bar__search {
+    width: 100%;
+  }
 }

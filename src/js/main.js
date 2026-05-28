@@ -15,11 +15,27 @@
   const yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Mobile nav toggle
+  // Mobile nav toggle — hamburger overlay
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".nav");
   if (toggle && nav) {
-    toggle.addEventListener("click", () => nav.classList.toggle("is-open"));
+    function setOpen(open) {
+      nav.classList.toggle("is-open", open);
+      document.body.classList.toggle("is-nav-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+    toggle.addEventListener("click", function () {
+      setOpen(!nav.classList.contains("is-open"));
+    });
+    // Close on link click (so navigation completes after the menu collapses)
+    nav.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { setOpen(false); });
+    });
+    // Esc closes
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) setOpen(false);
+    });
   }
 })();
 

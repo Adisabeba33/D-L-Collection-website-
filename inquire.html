@@ -31,13 +31,24 @@
         <span class="brand__line">Duke &amp; Lume</span>
         <span class="brand__line brand__line--sub">Collection</span>
       </a>
-      <nav class="nav">
+      <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="gallery.html">Gallery</a>
         <a href="collections.html">Collections</a>
         <a href="about.html">About</a>
         <a href="journal.html">Journal</a>
         <a href="inquire.html">Inquire</a>
+        <div class="nav__social" aria-label="Follow us">
+          <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+        </div>
       </nav>
+      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
     </div>
   </header>
 
@@ -67,6 +78,7 @@
             netlify-honeypot="bot-field"
             action="/thank-you.html">
         <input type="hidden" name="form-name" value="inquire">
+        <input type="hidden" name="work-id" id="work-id" value="">
         <p hidden>
           <label>Don't fill this out: <input name="bot-field"></label>
         </p>
@@ -133,15 +145,29 @@
   </footer>
 
   <script src="src/js/main.js"></script>
+  <script src="src/js/reveal.js"></script>
+  <script src="src/js/data-loader.js"></script>
   <script>
-    // Pre-fill "Work of interest" from ?work= query
+    // Pre-fill "Work of interest" — look the id up in GALLERY_DATA so
+    // the user sees "Beach Diva", not "beach-diva".
     (function () {
-      const params = new URLSearchParams(location.search);
-      const w = params.get("work");
-      if (w) {
-        const input = document.getElementById("work");
-        if (input) input.value = w;
+      const id = new URLSearchParams(location.search).get("work");
+      if (!id) return;
+      const input = document.getElementById("work");
+      const hidden = document.getElementById("work-id");
+      if (hidden) hidden.value = id;
+      if (!input) return;
+
+      // Show the raw id immediately so there's something while data loads
+      input.value = id;
+
+      function resolve() {
+        const works = window.GALLERY_DATA || [];
+        const match = works.find(function (w) { return w.id === id; });
+        if (match && match.title) input.value = match.title;
       }
+      if (window.DL_DATA_READY) resolve();
+      else document.addEventListener("dl:dataready", resolve, { once: true });
     })();
   </script>
 </body>

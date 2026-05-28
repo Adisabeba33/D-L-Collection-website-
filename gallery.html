@@ -31,13 +31,24 @@
         <span class="brand__line">Duke &amp; Lume</span>
         <span class="brand__line brand__line--sub">Collection</span>
       </a>
-      <nav class="nav">
+      <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="gallery.html">Gallery</a>
         <a href="collections.html">Collections</a>
         <a href="about.html">About</a>
         <a href="journal.html">Journal</a>
         <a href="inquire.html">Inquire</a>
+        <div class="nav__social" aria-label="Follow us">
+          <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://pinterest.com/" target="_blank" rel="noopener">Pinterest</a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+        </div>
       </nav>
+      <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle__bars" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </span>
+      </button>
     </div>
   </header>
 
@@ -50,7 +61,19 @@
       </p>
     </section>
 
-    <div class="filter-bar" data-gallery-filters></div>
+    <div class="filter-bar">
+      <div class="filter-bar__chips" data-gallery-filters></div>
+      <div class="filter-bar__search">
+        <label class="visually-hidden" for="gallery-search">Search works</label>
+        <input id="gallery-search"
+               type="search"
+               placeholder="Search works…"
+               autocomplete="off"
+               data-gallery-search>
+      </div>
+    </div>
+
+    <div class="gallery-count" data-gallery-count></div>
 
     <section class="gallery-grid" data-gallery-grid></section>
     <section class="newsletter" aria-labelledby="newsletter-title">
