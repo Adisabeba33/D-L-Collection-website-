@@ -42,6 +42,22 @@
     setMeta('meta[name="twitter:description"]', "content", work.description || "");
     setMeta('meta[name="twitter:image"]', "content", work.image || "");
 
+    // JSON-LD structured data — lets Google show rich preview cards
+    injectJsonLd({
+      "@context": "https://schema.org",
+      "@type": "VisualArtwork",
+      "name": work.title,
+      "description": work.description || "",
+      "image": work.image,
+      "dateCreated": work.year || undefined,
+      "artform": "AI-generated digital art",
+      "genre": collectionLabel,
+      "creator": {
+        "@type": "Organization",
+        "name": "Duke & Lume Collection"
+      }
+    });
+
     const title = DL_escape(work.title);
     const img = DL_escape(work.image);
     const year = DL_escape(work.year || "");
@@ -101,6 +117,21 @@
   function setMeta(selector, attr, value) {
     const el = document.querySelector(selector);
     if (el) el.setAttribute(attr, value);
+  }
+
+  function injectJsonLd(obj) {
+    // Strip undefined values so JSON.stringify produces clean output
+    const clean = {};
+    Object.keys(obj).forEach(function (k) {
+      if (obj[k] !== undefined && obj[k] !== "") clean[k] = obj[k];
+    });
+    const existing = document.querySelector('script[type="application/ld+json"][data-work-ld]');
+    if (existing) existing.remove();
+    const s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.dataset.workLd = "1";
+    s.textContent = JSON.stringify(clean);
+    document.head.appendChild(s);
   }
 
   if (window.DL_DATA_READY) init();

@@ -107,8 +107,12 @@ You never have to think about these — Decap handles it.
 | `collections.html` | Collections grid; `?category=slug` shows works in that collection |
 | `about.html` | About, license, terms, FAQ |
 | `journal.html` | Journal entries |
+| `work.html` | Single artwork detail page (`?id=<slug>`) |
 | `inquire.html` | Contact form (Netlify Forms) |
 | `thank-you.html` | Post-submit landing page |
+| `404.html` | Not-found page (Netlify auto-serves) |
+| `sitemap.xml` | Search-engine sitemap (update domain after deploy) |
+| `robots.txt` | Crawl rules + sitemap pointer |
 | `admin/index.html` | Decap CMS UI |
 
 ---
@@ -138,6 +142,32 @@ will render with a preview card on Instagram, Telegram, iMessage,
 Twitter/X, LinkedIn, etc.
 
 (Per-page OG images can be added later — say the word.)
+
+## Editorial workflow (review queue before publishing)
+
+The admin runs in **editorial workflow** mode. Edits go through:
+
+**Draft → In Review → Ready → Published**
+
+That means you can save a change without immediately pushing it live —
+useful when experimenting with images or copy. Drag a card to the
+"Published" column when you're confident. To go back to instant
+publishing, change `publish_mode: editorial_workflow` to
+`publish_mode: simple` in `admin/config.yml`.
+
+## Sitemap / robots / 404
+
+`sitemap.xml`, `robots.txt`, and `404.html` are ready to go. **One
+thing to update after deploy:** the sitemap and robots use
+`https://dukeandlume.netlify.app` as the base URL — search-replace
+that with your real domain once you know it (custom domain or final
+Netlify subdomain).
+
+## Newsletter
+
+A subscription form sits above the footer on every main page
+(`name="newsletter"` via Netlify Forms). Subscribers show up in the
+Netlify dashboard alongside inquiries.
 
 ## Contact form
 

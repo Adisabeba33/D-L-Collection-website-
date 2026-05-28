@@ -17,6 +17,35 @@
   <meta name="twitter:description" content="A curated AI art gallery for the modern collector.">
   <meta name="twitter:image" content="/src/assets/images/og/og-default.jpg">
 
+  <!-- Schema.org: helps Google understand this is an art gallery,
+       not a blog or shop. Affects rich results in search. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://dukeandlume.netlify.app/#website",
+        "url": "https://dukeandlume.netlify.app/",
+        "name": "Duke & Lume Collection",
+        "description": "A curated AI art gallery for the modern collector."
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://dukeandlume.netlify.app/#org",
+        "name": "Duke & Lume Collection",
+        "url": "https://dukeandlume.netlify.app/",
+        "logo": "https://dukeandlume.netlify.app/src/assets/images/og/og-default.jpg",
+        "sameAs": [
+          "https://instagram.com/",
+          "https://pinterest.com/",
+          "https://tiktok.com/"
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
@@ -29,6 +58,8 @@
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="site-header__inner">
@@ -47,7 +78,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
     <section class="editorial">
 
@@ -181,6 +212,28 @@
       <div class="value" data-reveal data-reveal-delay="240">
         <h3 class="value__title">Secure &amp; Ethical</h3>
         <p class="value__body">Made with care. Sold with transparency. Owned with confidence.</p>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter__inner" data-reveal>
+        <div class="newsletter__eyebrow">Stay in the loop</div>
+        <h2 class="newsletter__title" id="newsletter-title">New work, quietly delivered.</h2>
+        <p class="newsletter__body">A short note when a new piece joins the collection. No newsletters, no noise. Unsubscribe anytime.</p>
+        <form class="newsletter__form"
+              name="newsletter"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="/thank-you.html">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe →</button>
+        </form>
+        <div class="newsletter__note">We respect your inbox. Promise.</div>
       </div>
     </section>
 
